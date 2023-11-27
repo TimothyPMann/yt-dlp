@@ -622,6 +622,7 @@ class FFmpegFD(ExternalFD):
         self._debug_cmd(args)
 
         piped = any(fmt['url'] in ('-', 'pipe:') for fmt in selected_formats)
+        print("XXX starting ffmpeg with args:", args)
         with Popen(args, stdin=subprocess.PIPE, env=env) as proc:
             if piped:
                 self.on_process_started(proc, proc.stdin)
